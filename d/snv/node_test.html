@@ -29,7 +29,7 @@
         .label {
             text-align: center;
             vertical-align: middle;
-            line-height: 90px;
+            font-weight: lighter;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -63,18 +63,18 @@
             var padding;
             switch (true) {
                 case (numNodes < 4):
-                    maxRadius = 20;
-                    padding = 50;
+                    maxRadius = 25;
+                    padding = 70;
                     break;
                 case (numNodes < 6):
-                    maxRadius = 15;
+                    maxRadius = 20;
                     padding = 30;
                     break;
                 case (numNodes < 11):
                     maxRadius = 15;
                     padding = 20;
                     break;
-                case (numNodes < 21):
+                case (numNodes < 19):
                     maxRadius = 10;
                     padding = 20;
                     break;
@@ -153,6 +153,9 @@
                     .attr("dx", "-.25em")
                     .text(function(d) {
                         return d.index;
+                    })
+                    .style("font-size", function(d) {
+                        return 20 - 0.5 * d.parent.children.length > 0.2 ? 20 - 0.5 * d.parent.children.length : 0.2 ;
                     })
                     .attr("transform", function (d) {
                         return "rotate(" + (d.x - 90)*-1 + ")";
