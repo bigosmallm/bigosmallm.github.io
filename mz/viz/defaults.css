@@ -1,0 +1,88 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace ns "http://www.ibm.com/xmlns/prod/ilog/elixir/diagram/2010";
+@namespace metrics "metrics.*";
+
+@font-face {
+	src: url("assets/fonts/proxima-regular.otf"); 
+	fontFamily: Proxima;
+	fontStyle: normal;
+	fontWeight: normal;
+	advancedAntiAliasing: true;
+	embed-as-cff:true;
+}
+
+@font-face {
+	src: url("assets/fonts/proxima-bold.otf");
+	fontFamily: Proxima;
+	fontStyle: normal;
+	fontWeight: bold;
+	advancedAntiAliasing: true;
+	embed-as-cff:true;
+}
+
+global
+{
+	fontFamily: Proxima;
+}
+
+
+ns|Node
+{
+	/*	skinClass: ClassReference("node.skins.NodeSkin");
+	backgroundColor: #F0F0F0;*/
+	backgroundColor: #089945;
+	color: #FFFFFF;
+	backgroundAlpha: 1;
+}
+
+/** Dashboard Tile **/
+metrics|DashBoardTile
+{
+	skinClass: ClassReference("metrics.skins.DashboardTileSkin");
+	backgroundColor: #F0F0F0;
+	backgroundAlpha: 0.5;
+}
+
+.dashboardTileTitle
+{
+	fontWeight: bold;
+	fontSize: 24;
+	color: #9099A1;
+}
+
+.dashboardTileMetricHeavy
+{
+	fontWeight: bold;
+	fontSize: 46;
+	color: #000000;
+}
+
+.dashboardTileMetricLabel
+{
+	fontWeight: normal;
+	fontSize: 20;
+	color: #666666;
+}
+
+.formMetricHeavy
+{
+	fontWeight: bold;
+	fontSize: 46;
+	color: #000000;
+}
+
+.formMetricLabel
+{
+	fontWeight: normal;
+	fontSize: 20;
+	color: #000000;
+}
+
+.formMetricTitle
+{
+	fontWeight: bold;
+	fontSize: 24;
+	color: #000000;
+}
