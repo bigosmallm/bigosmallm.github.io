@@ -37,6 +37,17 @@ ns|Node
 	backgroundAlpha: 1;
 }
 
+s|HSlider
+{
+	skinClass: ClassReference("spark.skins.ios7.HSliderSkin");
+	fontFamily: RobotoBold;
+}
+
+s|Form
+{
+	backgroundAlpha = 0;
+}
+
 /** Dashboard Tile **/
 metrics|DashBoardTile
 {
