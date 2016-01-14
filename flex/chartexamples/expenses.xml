@@ -1,0 +1,21 @@
+<data>
+
+	<result month="Jan">            
+	    <profit>2000</profit>
+	    <expenses>1500</expenses>
+	    <amount>450</amount>
+	</result>
+
+	<result month="Feb">            
+	    <profit>1000</profit>
+	    <expenses>200</expenses>
+	    <amount>600</amount>
+	</result>
+
+	<result month="Mar">            
+	    <profit>1500</profit>
+	    <expenses>500</expenses>
+	    <amount>300</amount>
+	</result>
+
+</data>

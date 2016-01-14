@@ -1,0 +1,123 @@
+<data>
+
+	<result id='1'>            
+	    <date>1/1/2008</date>
+	    <cash>50500</cash>
+	    <stocks>198192</stocks>
+	    <retirement>130101</retirement>
+	    <home>75000</home>
+	    <other>19148</other>
+	    <assets>472941</assets>
+	</result>
+
+	<result id='2'>            
+	    <date>2/1/2008</date>
+	    <cash>51000</cash>
+	    <stocks>201042</stocks>
+	    <retirement>135000</retirement>
+	    <home>75300</home>
+	    <other>19248</other>
+	    <assets>481590</assets>
+	</result>
+
+	<result id='3'>            
+	    <date>3/1/2008</date>
+	    <cash>51550</cash>
+	    <stocks>206510</stocks>
+	    <retirement>137000</retirement>
+	    <home>75600</home>
+	    <other>19348</other>
+	    <assets>490008</assets>
+	</result>
+
+	<result id='4'>            
+	    <date>4/1/2008</date>
+	    <cash>52000</cash>
+	    <stocks>210775</stocks>
+	    <retirement>144000</retirement>
+	    <home>75900</home>
+	    <other>19448</other>
+	    <assets>502123</assets>
+	</result>
+
+	<result id='5'>            
+	    <date>5/1/2008</date>
+	    <cash>52575</cash>
+	    <stocks>211500</stocks>
+	    <retirement>145000</retirement>
+	    <home>76200</home>
+	    <other>19548</other>
+	    <assets>504823</assets>
+	</result>
+
+	<result id='6'>            
+	    <date>6/1/2008</date>
+	    <cash>53500</cash>
+	    <stocks>208900</stocks>
+	    <retirement>141000</retirement>
+	    <home>76500</home>
+	    <other>19648</other>
+	    <assets>499548</assets>
+	</result>
+
+	<result id='7'>            
+	    <date>7/1/2008</date>
+	    <cash>54500</cash>
+	    <stocks>198900</stocks>
+	    <retirement>129000</retirement>
+	    <home>76800</home>
+	    <other>19748</other>
+	    <assets>478948</assets>
+	</result>
+
+	<result id='8'>            
+	    <date>8/1/2008</date>
+	    <cash>55500</cash>
+	    <stocks>195250</stocks>
+	    <retirement>126750</retirement>
+	    <home>77100</home>
+	    <other>19848</other>
+	    <assets>474448</assets>
+	</result>
+
+	<result id='9'>            
+	    <date>9/1/2008</date>
+	    <cash>56500</cash>
+	    <stocks>185200</stocks>
+	    <retirement>127900</retirement>
+	    <home>77400</home>
+	    <other>19948</other>
+	    <assets>466948</assets>
+	</result>
+
+	<result id='10'>            
+	    <date>10/1/2008</date>
+	    <cash>57500</cash>
+	    <stocks>186222</stocks>
+	    <retirement>130100</retirement>
+	    <home>77700</home>
+	    <other>20048</other>
+	    <assets>471570</assets>
+	</result>
+
+	<result id='11'>            
+	    <date>11/1/2008</date>
+	    <cash>58500</cash>
+	    <stocks>191400</stocks>
+	    <retirement>134850</retirement>
+	    <home>78000</home>
+	    <other>20148</other>
+	    <assets>482898</assets>
+	</result>
+
+	<result id='12'>            
+	    <date>12/1/2008</date>
+	    <cash>59600</cash>
+	    <stocks>188924</stocks>
+	    <retirement>133750</retirement>
+	    <home>78300</home>
+	    <other>20248</other>
+	    <assets>480822</assets>
+	</result>
+
+</data>

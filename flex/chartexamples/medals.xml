@@ -1,0 +1,38 @@
+<data>
+
+	<result>            
+	    <country id='1'>USA</country>
+	    <gold>35</gold>
+	    <silver>39</silver>
+	    <bronze>29</bronze>
+	</result>
+
+	<result>            
+	    <country id='2'>SWF</country>
+	    <gold>32</gold>
+	    <silver>17</silver>
+	    <bronze>14</bronze>
+	</result>
+
+	<result>            
+	    <country id='3'>PBJ</country>
+	    <gold>27</gold>
+	    <silver>27</silver>
+	    <bronze>38</bronze>
+	</result>
+
+	<result>            
+	    <country id='4'>PS</country>
+	    <gold>15</gold>
+	    <silver>15</silver>
+	    <bronze>10</bronze>
+	</result>
+
+	<result>            
+	    <country id='5'>IL</country>
+	    <gold>15</gold>
+	    <silver>10</silver>
+	    <bronze>10</bronze>
+	</result>
+
+</data>

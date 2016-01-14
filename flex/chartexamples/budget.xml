@@ -1,0 +1,33 @@
+<data>
+
+	<result>            
+	    <item>Taxes</item>
+	    <amount>2000</amount>
+	</result>
+
+	<result>            
+	    <item>Rent</item>
+	    <amount>1000</amount>
+	</result>
+
+	<result>            
+	    <item>Electricity</item>
+	    <amount>100</amount>
+	</result>
+
+	<result>            
+	    <item>Auto</item>
+	    <amount>450</amount>
+	</result>
+
+	<result>            
+	    <item>Fuel</item>
+	    <amount>100</amount>
+	</result>
+
+	<result>            
+	    <item>Food</item>
+	    <amount>200</amount>
+	</result>
+
+</data>
