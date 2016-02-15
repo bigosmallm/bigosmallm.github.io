@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Datos Data Sources</title>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://rawgit.com/newrelic-forks/d3-plugins-sankey/master/sankey.js"></script>
+    <script src="https://rawgit.com/misoproject/d3.chart/master/d3.chart.min.js"></script>
+    <script src="https://rawgit.com/q-m/d3.chart.sankey/master/d3.chart.sankey.min.js"></script>
+    <style>
+        body {
+            padding: 10px;
+            min-width: 600px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        #chart {
+            width: 1024px;
+            height: 800px;
+            font: 14px sans-serif;
+        }
+        .node rect {
+            fill-opacity: .9;
+            shape-rendering: crispEdges;
+            stroke-width: 0;
+        }
+        .node text {
+            /*text-shadow: 0 1px 0 #fff;*/
+            font-weight:bold;
+        }
+        .link {
+            fill-opacity: 0;
+            stroke-opacity: .2;
+        }
+
+        div#pop-up {
+            display: none;
+            position:absolute;
+            color: black;
+            font-size: 14px;
+            background: #ffffff;
+            padding: 5px 10px 5px 10px;
+            -moz-border-radius: 5px 5px;
+            border-radius: 5px 5px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #999999;
+        }
+        div#pop-up-title {
+            font-size: 15px;
+            width:200px;
+            margin-bottom: 4px;
+            font-weight: bolder;
+        }
+        div#pop-up-content {
+            font-size: 12px;
+        }
+        div#pop-desc {
+            width: 100px;
+        }
+        div#pop-img {
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+    </style>
+</head>
+<body>
+<div id="chart">
+    <div id="pop-up">
+        <div id="pop-up-title"></div>
+        <div id="pop-up-content">
+            <table> <tr>
+                <td><div id="pop-img"></div></td>
+                <td><div id="pop-desc"></div></td>
+            </tr> </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    var colors = {
+        'datos':        '#666666',
+        'database':    '#367d85',
+        'collection':  '#9999f5',
+        'policy':     '#97ba4c',
+        'store':       '#f5662b',
+        'fallback':     '#9f9fa3'
+    };
+    /*
+     d3.json("datos.json", function(error, json) {
+     var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
+     chart
+     .name(label)
+     .colorNodes(function(name, node) {
+     return color(node, 1) || colors.fallback;
+     })
+     .colorLinks(function(link) {
+     return color(link.source, 4) || color(link.target, 1) || colors.fallback;
+     })
+     .nodeWidth(30)
+     .nodePadding(5)
+     .spread(true)
+     .iterations(0)
+     .draw(json);
+
+
+
+     function label(node) {
+     return node.name.replace(/\s*\(.*?\)$/, '');
+     }
+
+     function color(node, depth) {
+     var id = node.id.replace(/(_score)?(_\d+)?$/, '');
+     if (colors[id]) {
+     return colors[id];
+     } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
+     return color(node.targetLinks[0].source, depth-1);
+     } else {
+     return null;
+     }
+     }
+
+
+     });
+     */
+
+
+    var margin = {top: 1, right: 1, bottom: 6, left: 1},
+            width = 1024 - margin.left - margin.right,
+            height = 800 - margin.top - margin.bottom;
+
+    var formatNumber = d3.format(",.0f"),
+            format = function(d) { return formatNumber(d) + " TWh"; },
+            color = d3.scale.category20();
+
+    var svg = d3.select("#chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var sankey = d3.sankey()
+            .nodeWidth(30)
+            .nodePadding(5)
+            .size([width, height]);
+
+    var path = sankey.link();
+
+    d3.json("datos.json", function(datos) {
+
+        sankey
+                .nodes(datos.nodes)
+                .links(datos.links)
+                .layout(64);
+
+        var link = svg.append("g").selectAll(".link")
+                .data(datos.links)
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", path)
+                .attr("id", function(d,i){
+                    d.id = i;
+                    return "link-"+i;
+                })
+                .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+                .style("stroke", function(d) { return d.color = color(d.source, 1); })
+                /*.sort(function(a, b) { return b.dy - a.dy; })*/;
+
+        link.append("title")
+                .text(function(d) { return d.source.name + " → " + d.target.name + "\n"});
+
+        var node = svg.append("g").selectAll(".node")
+                .data(datos.nodes)
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+                .on("mouseover",highlight_node_links)
+                .on("click",show_details)
+                .on("mouseout",highlight_node_links);
+
+
+        node.append("rect")
+                .attr("height", function(d) { return d.dy; })
+                .attr("width", sankey.nodeWidth())
+                .style("fill", function(d) { return d.color = color(d,1); })
+                .style("stroke", function(d) { return d3.rgb(d.color).darker(2); })
+                .append("title")
+                .text(function(d) { return d.name + "\n"; })
+
+
+        node.append("text")
+                .attr("x", -6)
+                .attr("y", function(d) { return d.dy / 2; })
+                .attr("dy", ".35em")
+                 .attr("text-anchor", "end")
+                 .attr("transform", null)
+                .text(function(d) { return d.name; })
+                .filter(function(d) { return d.x < width / 2; })
+                .attr("x", 6 + sankey.nodeWidth())
+                .attr("text-anchor", "start");
+
+        function color(node, depth) {
+            var id = node.id.replace(/(_\d+)?$/, '');
+            if (colors[id]) {
+                return colors[id];
+            } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
+                return color(node.targetLinks[0].source, depth-1);
+            } else {
+                return null;
+            }
+        }
+        /*        function dragmove(d) {
+         d3.select(this).attr("transform", "translate(" + d.x + "," + (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) + ")");
+         sankey.relayout();
+         link.attr("d", path);
+         }*/
+
+        function highlight_node_links(node,i){
+
+            var remainingNodes=[],
+                    nextNodes=[];
+
+            var stroke_opacity = 0;
+            if( d3.select(this).attr("data-clicked") == "1" ){
+                d3.select(this).attr("data-clicked","0");
+                stroke_opacity = 0.2;
+            }else{
+                d3.select(this).attr("data-clicked","1");
+                stroke_opacity = 0.5;
+            }
+
+            var traverse = [{
+                linkType : "sourceLinks",
+                nodeType : "target"
+            },{
+                linkType : "targetLinks",
+                nodeType : "source"
+            }];
+
+            traverse.forEach(function(step){
+                node[step.linkType].forEach(function(link) {
+                    remainingNodes.push(link[step.nodeType]);
+                    highlight_link(link.id, stroke_opacity);
+                });
+
+                while (remainingNodes.length) {
+                    nextNodes = [];
+                    remainingNodes.forEach(function(node) {
+                        node[step.linkType].forEach(function(link) {
+                            nextNodes.push(link[step.nodeType]);
+                            highlight_link(link.id, stroke_opacity);
+                        });
+                    });
+                    remainingNodes = nextNodes;
+                }
+            });
+        }
+
+        function highlight_link(id,opacity){
+            d3.select("#link-"+id).style("stroke-opacity", opacity);
+        }
+
+        function show_details(node,i) {
+
+            if(node.popupvisible)
+            {
+                node.popupvisible = false;
+                $("#pop-up").hide();
+                return;
+            }
+
+            $("#pop-up").fadeOut(100,function () {
+                // Popup content
+                $("#pop-up-title").html(node.name);
+                $("#pop-desc").html("<hr>Details goes here." );
+
+                // Popup position
+                var popLeft = node.x + 400;
+                var popTop = node.y;
+                $("#pop-up").css({"left":popLeft,"top":popTop});
+                $("#pop-up").fadeIn(100);
+                node.popupvisible = true;
+            });
+
+        }
+    });
+
+</script>
+</body>
+</html>
