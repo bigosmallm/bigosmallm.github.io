@@ -22,6 +22,20 @@ angular.module('webappApp')
                   options:{icon: 'images/bus_icon.png'}
     };
 
+    $scope.stop = {};
+    $scope.stop.mz =
+      {
+        coords: {latitude: 37.419472, longitude: -122.146881},
+        show: false,
+        templateURL:'scripts/templates/mz.stop.template.html',
+        isIconVisibleOnClick: true,
+        id: 'stop_mz'
+      };
+
+    $scope.handleMZStopClose = function() {
+
+    };
+
     uiGmapGoogleMapApi.then(function(maps) {
       $scope.initRTMChannels();
     });

@@ -1,3 +1,12 @@
 <ui-gmap-google-map center='map.center' zoom='map.zoom'>
   <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" idkey="m.id" options="map.options" ></ui-gmap-marker>
+  <ui-gmap-marker coords="stop.mz.coords" idkey="stop.mz.id">
+    <ui-gmap-window
+      show='stop.mz.show'
+      templateUrl='stop.mz.templateURL'
+      isIconVisibleOnClick='stop.mz.isIconVisibleOnClick'
+      closeClick='handleMZStopClose'
+    >
+    </ui-gmap-window>
+  </ui-gmap-marker>
 </ui-gmap-google-map>
