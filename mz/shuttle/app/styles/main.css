@@ -6,8 +6,8 @@
 }
 
 body {
-  padding: 0;
+  padding: 0px;
   font-size: 200%;
 }
 
-.angular-google-map-container { height: 900px;}
+.angular-google-map-container { height:100%; width:100%; position:absolute; top:0; left:0;}
