@@ -38,6 +38,32 @@ angular.module('webappApp')
 
     $scope.stop.mz.destination = '';
 
+    $scope.stop.caltrain =
+    {
+      coords: {latitude: 37.428844, longitude: -122.141447},
+      show: false,
+      templateURL:'scripts/templates/all.stop.template.html',
+      isIconVisibleOnClick: true,
+      id: 'stop_caltrain'
+    };
+
+    $scope.handleCaltrainStopClose = function() {
+
+    };
+
+    $scope.stop.hanover =
+    {
+      coords: {latitude: 37.413233, longitude: -122.142615},
+      show: false,
+      templateURL:'scripts/templates/all.stop.template.html',
+      isIconVisibleOnClick: true,
+      id: 'stop_hanover'
+    };
+
+    $scope.handleHanoverStopClose = function() {
+
+    };
+
     uiGmapGoogleMapApi.then(function(maps) {
       $scope.initRTMChannels();
     });

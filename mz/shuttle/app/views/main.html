@@ -9,4 +9,22 @@
     >
     </ui-gmap-window>
   </ui-gmap-marker>
+  <ui-gmap-marker coords="stop.caltrain.coords" idkey="stop.caltrain.id">
+    <ui-gmap-window
+      show='stop.caltrain.show'
+      templateUrl='stop.caltrain.templateURL'
+      isIconVisibleOnClick='stop.caltrain.isIconVisibleOnClick'
+      closeClick='handleCaltrainStopClose'
+    >
+    </ui-gmap-window>
+  </ui-gmap-marker>
+  <ui-gmap-marker coords="stop.hanover.coords" idkey="stop.hanover.id">
+    <ui-gmap-window
+      show='stop.hanover.show'
+      templateUrl='stop.hanover.templateURL'
+      isIconVisibleOnClick='stop.hanover.isIconVisibleOnClick'
+      closeClick='handleHanoverStopClose'
+    >
+    </ui-gmap-window>
+  </ui-gmap-marker>
 </ui-gmap-google-map>
