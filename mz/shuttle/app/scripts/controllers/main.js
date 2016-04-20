@@ -19,16 +19,7 @@ angular.module('webappApp')
     $scope.map = {center: { latitude: 37.419472, longitude: -122.146881 },
                   zoom: 15,
                   markers: [],
-      icons: [
-        {
-          icon: {
-            path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
-          },
-          offset: '25px',
-          repeat: '50px'
-        }
-      ]
-                  //options:{icon: 'images/bus_icon.png'}
+                  options:{icon: 'images/bus_icon.png'}
     };
 
     uiGmapGoogleMapApi.then(function(maps) {
