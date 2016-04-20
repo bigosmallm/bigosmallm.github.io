@@ -36,6 +36,8 @@ angular.module('webappApp')
 
     };
 
+    $scope.stop.mz.destination = '';
+
     uiGmapGoogleMapApi.then(function(maps) {
       $scope.initRTMChannels();
     });
