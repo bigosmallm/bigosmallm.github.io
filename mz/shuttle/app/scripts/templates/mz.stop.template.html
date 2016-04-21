@@ -1,9 +1,14 @@
-<div style="width: 200px; height: 200px;">
-  <h5>Going to: </h5>
+<div style="width: 200px; height: 225px;">
+  <h3>1050 Page Mill</h3>
   <hr flex/>
-  <md-radio-group ng-model="stop.mz.destination">
-    <md-radio-button value="Hanover Parking Lot" class="md-primary">Hanover Parking Lot</md-radio-button>
-    <md-radio-button value="Cali Caltrain"> Cali Caltrain </md-radio-button>
+  <h5>Going to: </h5>
+  <md-radio-group ng-model="parameter.parent.stop.mz.to">
+    <md-radio-button value="Hanover" class="md-primary">Hanover Parking Lot</md-radio-button>
+    <md-radio-button value="Caltrain"> Cali Caltrain </md-radio-button>
   </md-radio-group>
-  <md-button>Request!</md-button>
+  <div layout="row">
+    <span flex/>
+    <md-button ng-disabled="parameter.parent.stop.mz.to == '' " ng-click="parameter.parent.requestAtMZ()">Request!</md-button>
+    <span flex/>
+  </div>
 </div>
