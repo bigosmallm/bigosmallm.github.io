@@ -10,4 +10,8 @@ body {
   font-size: 200%;
 }
 
+.boldtext {
+  font-weight: bold;
+}
+
 .angular-google-map-container { height:100%; width:100%; position:absolute; top:0; left:0;}

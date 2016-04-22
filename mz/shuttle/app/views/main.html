@@ -1,7 +1,4 @@
 <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-  <ui-gmap-marker coords="shuttle1.coords" idkey="shuttle1.id" options="map.options" ></ui-gmap-marker>
-  <ui-gmap-marker coords="shuttle2.coords" idkey="shuttle2.id" options="map.options" ></ui-gmap-marker>
-  <ui-gmap-marker coords="shuttle3.coords" idkey="shuttle3.id" options="map.options" ></ui-gmap-marker>
   <ui-gmap-marker coords="stop.mz.coords" idkey="stop.mz.id" options="stop.options">
     <ui-gmap-window
       show='stop.mz.show'
@@ -32,4 +29,7 @@
     >
     </ui-gmap-window>
   </ui-gmap-marker>
+  <ui-gmap-marker coords="shuttle1.coords" idkey="shuttle1.id" options="shuttle1.options" zIndex="1000" ></ui-gmap-marker>
+  <ui-gmap-marker coords="shuttle2.coords" idkey="shuttle2.id" options="shuttle2.options" zIndex="1001" ></ui-gmap-marker>
+  <ui-gmap-marker coords="shuttle3.coords" idkey="shuttle3.id" options="shuttle3.options" zIndex="1002" ></ui-gmap-marker>
 </ui-gmap-google-map>
