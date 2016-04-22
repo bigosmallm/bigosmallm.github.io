@@ -1,14 +1,13 @@
-<div style="width: 200px; height: 225px;">
-  <h3>1050 Page Mill</h3>
+<div style="width: 200px; height: 225px; padding: 10px" ng-cloak>
+  <h5>You are at: 1050 Page Mill</h5>
   <hr flex/>
   <h5>Going to: </h5>
   <md-radio-group ng-model="parameter.parent.stop.mz.to">
     <md-radio-button value="Hanover" class="md-primary">Hanover Parking Lot</md-radio-button>
     <md-radio-button value="Caltrain"> Cali Caltrain </md-radio-button>
   </md-radio-group>
-  <div layout="row">
-    <span flex/>
-    <md-button ng-disabled="parameter.parent.stop.mz.to == '' " ng-click="parameter.parent.requestAtMZ()">Request!</md-button>
-    <span flex/>
+  <div>
+    <md-button style="width: 90%" class="md-primary md-raised"  ng-disabled="parameter.parent.stop.mz.to == '' "
+               ng-click="parameter.parent.requestAtMZ()">Request!</md-button>
   </div>
 </div>

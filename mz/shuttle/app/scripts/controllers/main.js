@@ -22,6 +22,7 @@ angular.module('webappApp')
     };
 
     $scope.stop = {};
+    $scope.stop.options = {icon: 'images/StartPoint.png'};
     $scope.stop.mz =
       {
         coords: {latitude: 37.419472, longitude: -122.146881},
@@ -167,6 +168,7 @@ angular.module('webappApp')
       request.to = $scope.stop.mz.to;
       $scope.sendRequest(request);
       $scope.stop.mz.show = false;
+      $scope.stop.mz.visible = false;
     };
 
     $scope.requestAtCaltrain = function() {
