@@ -16,6 +16,14 @@ body {
   width: calc((100%  - 50px)/3);
   height: 350px; }
 
+@media (min-width: 600px) and (max-width: 959px) {
+  .card {
+    width: calc((100%  - 50px)/2);
+    height: auto; } }
+@media (max-width: 599px) {
+  .card {
+    width: 100%;
+    height: auto; } }
 .bio {
   padding: 10px;
   font-size: 15px;
